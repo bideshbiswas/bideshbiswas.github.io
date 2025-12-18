@@ -1,0 +1,349 @@
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --primary: #38bdf8;
+            --secondary: #6366f1;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --font-main: 'Segoe UI', system-ui, sans-serif;
+            --glass: rgba(15, 23, 42, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- DYNAMIC GLASS NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo { 
+            font-weight: 800; 
+            font-size: 1.5rem; 
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Desktop Menu */
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { 
+            font-weight: 500; 
+            position: relative;
+        }
+        
+        /* Dynamic Underline Effect */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Mobile Menu Toggle (Hidden on Desktop) */
+        .nav-toggle { display: none; }
+        .nav-toggle-label { display: none; cursor: pointer; }
+
+        /* --- PARALLAX HERO SECTION --- */
+        .hero {
+            /* Using a placeholder tech image from Unsplash */
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax Effect */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+        }
+
+        .hero-content { max-width: 800px; animation: fadeIn 1.5s ease-out; }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 600px; }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+            border: 2px solid transparent;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
+            background: transparent;
+            border-color: var(--primary);
+        }
+
+        /* --- SECTIONS --- */
+        section { padding: 6rem 10%; }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        .section-title span { border-bottom: 4px solid var(--primary); }
+
+        /* --- ABOUT & SKILLS --- */
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+        .about-text { flex: 1; min-width: 300px; }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .skill-card {
+            background: #1e293b;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
+        .skill-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+
+        /* --- PROJECT CARDS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .card-img {
+            height: 200px;
+            background-color: #334155;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Dynamic Background Images for Projects */
+        .img-gpgpu { background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); } /* Circuit/Tech */
+        .img-sim { background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop'); } /* Wave Simulation */
+        .img-vlog { background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=1953&auto=format&fit=crop'); } /* Japan Camera */
+
+        .card-content { padding: 2rem; }
+        .card-content h3 { margin-bottom: 0.5rem; font-size: 1.4rem; }
+        .card-content .tech-stack { color: var(--primary); font-size: 0.85rem; margin-bottom: 1rem; display: block;}
+
+        /* --- CONTACT --- */
+        .contact-section {
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=2070&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            
+            /* Hamburger Menu Icon */
+            .nav-toggle-label {
+                display: block;
+                width: 30px;
+                height: 30px;
+                position: relative;
+            }
+            .nav-toggle-label span, .nav-toggle-label span::before, .nav-toggle-label span::after {
+                background: white;
+                height: 3px;
+                width: 100%;
+                position: absolute;
+                left: 0;
+                transition: 0.3s;
+            }
+            .nav-toggle-label span { top: 13px; }
+            .nav-toggle-label span::before { content: ''; top: -10px; }
+            .nav-toggle-label span::after { content: ''; top: 10px; }
+
+            /* Pure CSS Menu Logic */
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #0f172a;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: 0.4s;
+                border-bottom: 1px solid #334155;
+            }
+
+            .nav-links li { width: 100%; text-align: center; }
+            .nav-links a { display: block; padding: 1.5rem; width: 100%; }
+            .nav-links a:hover { background: #1e293b; }
+
+            /* When checkbox is checked, show menu */
+            .nav-toggle:checked ~ .nav-links { max-height: 400px; }
+        }
+
+        /* Simple Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* --- CONTACT FORM & LAYOUT --- */
+
+/* Wrapper for the split layout */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto 4rem auto;
+    background: rgba(15, 23, 42, 0.6); /* Glass effect backing */
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left; /* Reset center alignment from previous step */
+}
+
+/* Left Side Styling */
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info h3 { font-size: 2rem; margin-bottom: 1rem; }
+.contact-info p { margin-bottom: 2rem; color: var(--text-muted); }
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Social Icons (Simple Text Circles) */
+.social-links { display: flex; gap: 1rem; margin-top: 2rem; }
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-weight: bold;
+    color: var(--primary);
+}
+.social-icon:hover {
+    background: var(--primary);
+    color: #0f172a;
+    transform: translateY(-3px);
+}
+
+/* Form Styling */
+.contact-form {
+    flex: 1.5;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3); /* Dark transparent background */
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.form-group textarea { resize: vertical; }
+
+/* Glow effect when you click inside a box */
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.submit-btn {
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    font-size: 1.1rem;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .contact-container { padding: 1.5rem; gap: 2rem; }
+}

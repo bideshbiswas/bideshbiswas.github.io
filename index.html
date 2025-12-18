@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidesh Biswas Biki | Researcher Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Bidesh.dev</div>
+        
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Research</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p>Welcome to my portfolio</p>
+            <h1>Bidesh <br><span>Biswas Biki</span></h1>
+            <p>PhD Student & Researcher. Exploring the frontiers of HPC, GPGPU Computing, and Electromagnetic Simulation.</p>
+            <a href="#projects" class="btn">View Research</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title"><span>About Me</span></h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>I am a second-year PhD student based in <strong>Miyazaki, Japan</strong>, originally from Bangladesh. I specialize in computational science, focusing on accelerating complex simulations using supercomputing technologies.</p>
+                <br>
+                <p>My current work involves the <strong>ADVENTURE_FullWave</strong> framework, where I implement solvers using NVIDIA's cuDSS library to handle massive datasets efficiently.</p>
+                
+                <div class="skills-grid">
+                    <div class="skill-card">C++ / MPI</div>
+                    <div class="skill-card">CUDA / GPGPU</div>
+                    <div class="skill-card">Linux / Ubuntu</div>
+                    <div class="skill-card">FEM Analysis</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title"><span>Projects</span></h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="card-img img-gpgpu"></div>
+                <div class="card-content">
+                    <span class="tech-stack">CUDA • C++ • FEM</span>
+                    <h3>GPGPU Acceleration</h3>
+                    <p>Researching subdomain solvers for high-frequency electromagnetic field analysis. Targeting submission for ICAROB 2026.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-img img-sim"></div>
+                <div class="card-content">
+                    <span class="tech-stack">ADVENTURE • cuDSS • MPI</span>
+                    <h3>Large Scale Simulation</h3>
+                    <p>Optimization of the ADVENTURE_FullWave system using NVIDIA cuDSS to improve solver speed and memory management.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-img img-vlog"></div>
+                <div class="card-content">
+                    <span class="tech-stack">YouTube • Content Creation</span>
+                    <h3>Life in Japan</h3>
+                    <p>A personal project documenting life as an international PhD student couple in Japan. Vlogs covering travel and culture.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+<section id="contact" class="contact-section">
+    <h2 class="section-title"><span>Contact Me</span></h2>
+    
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Let's Connect</h3>
+            <p>I am always open to discussing new research, HPC collaborations, or just a friendly chat about life in Japan.</p>
+            
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <span>your-email@example.com</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Miyazaki, Japan</span>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon">Li</a> <a href="#" class="social-icon">Gh</a> <a href="#" class="social-icon">Yt</a> </div>
+        </div>
+
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn submit-btn">Send Message</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Bidesh Biswas Biki. Built with HTML & CSS.</p>
+    </footer>
+</section>
+
+</body>
+</html>
