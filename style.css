@@ -499,3 +499,26 @@
         height: 250px;
     }
 }
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted); /* Start with grey color */
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect: Glows with your theme color */
+.social-icon:hover {
+    background: var(--primary);
+    color: #0f172a; /* Icon turns dark for contrast */
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+    border-color: var(--primary);
+}
