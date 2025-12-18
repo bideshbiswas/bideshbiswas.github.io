@@ -17,19 +17,33 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#projects">Research</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <p>Welcome to my portfolio</p>
+<section id="home" class="hero">
+    <div class="hero-container">
+        
+        <div class="hero-text">
+            <p class="greeting">Hello, I'm</p>
             <h1>Bidesh <br><span>Biswas Biki</span></h1>
-            <p>PhD Student & Researcher. Exploring the frontiers of HPC, GPGPU Computing, and Electromagnetic Simulation.</p>
-            <a href="#projects" class="btn">View Research</a>
+            <p class="bio">
+                PhD Student & Researcher specializing in HPC, GPGPU Computing, and Electromagnetic Simulation.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View Research</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
         </div>
-    </section>
+
+        <div class="hero-image">
+            <img src="images/profile.jpeg" alt="Bidesh Biswas Biki">
+        </div>
+
+    </div>
+</section>
 
     <section id="about">
         <h2 class="section-title"><span>About Me</span></h2>
@@ -82,7 +96,42 @@
 
         </div>
     </section>
+<section id="gallery">
+    <h2 class="section-title"><span>Life in Japan</span></h2>
+    <p style="text-align: center; margin-bottom: 3rem; color: #cbd5e1;">
+        Snapshots from my journey as a PhD student and vlogger.
+    </p>
 
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=2070&auto=format&fit=crop" alt="Japan Scenery">
+            <div class="overlay">
+                <span>Exploring Tokyo</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" alt="University Life">
+            <div class="overlay">
+                <span>Campus Life</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=1953&auto=format&fit=crop" alt="Vlogging Setup">
+            <div class="overlay">
+                <span>Vlogging Setup</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=2070&auto=format&fit=crop" alt="Miyazaki Sunset">
+            <div class="overlay">
+                <span>Miyazaki Sunset</span>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="contact" class="contact-section">
     <h2 class="section-title"><span>Contact Me</span></h2>
     
@@ -119,7 +168,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Bidesh Biswas Biki. Built with HTML & CSS.</p>
+        <p>&copy; 2025 Bidesh Biswas Biki</p>
     </footer>
 </section>
 
