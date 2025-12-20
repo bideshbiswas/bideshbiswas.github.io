@@ -256,10 +256,165 @@
         </form>
     </div>
 
+    
+
     <footer>
         <p>&copy; 2025 Bidesh Biswas Biki</p>
     </footer>
 </section>
+<div id="player-rocket">🚀</div>
 
+<script>
+    const rocket = document.getElementById('player-rocket');
+    
+    // Position Variables
+    let currentX = window.innerWidth / 2;
+    let currentY = window.innerHeight / 2;
+    let targetX = currentX;
+    let targetY = currentY;
+    
+    // Physics Variables
+    let rotation = -45;
+    let targetRotation = -45;
+    
+    // SPEED SETTINGS
+    const lerpSpeed = 0.25;
+    const flySpeed = 15;
+    
+    // SCROLL ACCELERATION (This fixes the slowness)
+    let currentScrollSpeed = 0;
+    const maxScrollSpeed = 150; // Maximum top speed (Very fast)
+    const acceleration = 5;     // How fast it speeds up
+    
+    // KEYBOARD STATE
+    const keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false };
+    let hoveredElement = null; 
+
+    function animate() {
+        const h = window.innerHeight;
+        const w = window.innerWidth;
+        const edge = 50; 
+
+        // 1. VERTICAL MOVEMENT & SCROLLING
+        if (keys.ArrowUp) {
+            targetRotation = -45;
+            if (targetY < edge) { 
+                // ACCELERATE UP
+                currentScrollSpeed = Math.min(currentScrollSpeed + acceleration, maxScrollSpeed);
+                // behavior: 'auto' overrides CSS smooth scroll for instant response
+                window.scrollBy({ top: -currentScrollSpeed, behavior: 'auto' }); 
+                targetY = edge; 
+            } else { 
+                targetY -= flySpeed; 
+                currentScrollSpeed = 10; // Reset speed when flying normally
+            }
+        } else if (keys.ArrowDown) {
+            targetRotation = 135;
+            if (targetY > h - edge) { 
+                // ACCELERATE DOWN
+                currentScrollSpeed = Math.min(currentScrollSpeed + acceleration, maxScrollSpeed);
+                window.scrollBy({ top: currentScrollSpeed, behavior: 'auto' }); 
+                targetY = h - edge; 
+            } else { 
+                targetY += flySpeed; 
+                currentScrollSpeed = 10; // Reset speed
+            }
+        } else {
+            // Reset acceleration if not scrolling
+            currentScrollSpeed = 10;
+        }
+
+        // 2. HORIZONTAL MOVEMENT
+        if (keys.ArrowLeft) {
+            targetRotation = -135;
+            targetX = Math.max(edge, targetX - flySpeed);
+        }
+        if (keys.ArrowRight) {
+            targetRotation = 45;
+            targetX = Math.min(w - edge, targetX + flySpeed);
+        }
+
+        // 3. SMOOTH INTERPOLATION
+        currentX += (targetX - currentX) * lerpSpeed;
+        currentY += (targetY - currentY) * lerpSpeed;
+        
+        // 4. SMOOTH ROTATION
+        let rotDiff = targetRotation - rotation;
+        if (rotDiff > 180) rotDiff -= 360;
+        if (rotDiff < -180) rotDiff += 360;
+        rotation += rotDiff * 0.15;
+
+        // 5. APPLY CSS
+        let scale = (hoveredElement) ? 1.3 : 1;
+        rocket.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`;
+
+        // 6. COLLISION DETECTION
+        let elementBelow = document.elementFromPoint(currentX, currentY);
+        let clickable = elementBelow ? elementBelow.closest('a, button, input, textarea, .skill-box') : null;
+
+        if (clickable) {
+            if (hoveredElement !== clickable) {
+                hoveredElement = clickable;
+                rocket.classList.add('hovering');
+                clickable.classList.add('force-hover'); 
+            }
+        } else {
+            if (hoveredElement) {
+                hoveredElement.classList.remove('force-hover');
+                hoveredElement = null;
+                rocket.classList.remove('hovering');
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // LISTENERS
+    document.addEventListener('mousemove', (e) => {
+        if (!keys.ArrowUp && !keys.ArrowDown && !keys.ArrowLeft && !keys.ArrowRight) {
+            targetX = e.clientX;
+            targetY = e.clientY;
+            targetRotation = -45;
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (keys.hasOwnProperty(e.key)) {
+            e.preventDefault(); 
+            keys[e.key] = true; 
+        }
+       // ... inside document.addEventListener('keydown', (e) => { ...
+
+    // INTERACTION (Enter / Space to Click)
+    if (['Enter', ' '].includes(e.key) && hoveredElement) {
+        e.preventDefault(); // Stop spacebar scrolling
+        
+        // 1. Animate the Rocket
+        rocket.style.transform += " scale(0.8)";
+        
+        // 2. Animate the BUTTON (The Fix)
+        hoveredElement.classList.add('force-click');
+
+        // 3. Reset animations after 150ms
+        setTimeout(() => {
+            rocket.style.transform = rocket.style.transform.replace(" scale(0.8)", "");
+            if(hoveredElement) hoveredElement.classList.remove('force-click');
+        }, 150);
+
+        // 4. Actually click the link
+        hoveredElement.click();
+    }
+
+// ... rest of code ...
+    });
+
+    document.addEventListener('keyup', (e) => {
+        if (keys.hasOwnProperty(e.key)) {
+            keys[e.key] = false; 
+            currentScrollSpeed = 10; // Reset speed immediately when letting go
+        }
+    });
+</script>
 </body>
 </html>

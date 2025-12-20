@@ -13,7 +13,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
         }
 
         body {
@@ -610,4 +609,67 @@
 @keyframes fillBar {
     from { width: 0%; }
     to { width: var(--w); } /* CSS Variable trick handled below */
+}
+
+body {
+    /* ... your other body settings ... */
+    
+    /* ADD THIS LINE FOR THE CAR CURSOR */
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAhFBMVEUAAAA4vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf84vf9W1X0cAAAALnRSTlMAAAwXHR8gISInMDEyMzU3ODk8P0BDREVGR0hJSktMTk9QUVJTVlhZW1xdXl9gYw04mXwAAAABYktHRACIBR1IAAAAB3RJTUUH6AwUFSs1K0i/WAAAAQpJREFUOMuVk9cSgjAMRQ/qFaTYsCCiiL13//+vjJCSbF/2fXgzk3TbnCRJ/l15N81iO4/D/LkfF9M8i9u752FzO8+3y/2wud8f5vX5dDovD6fXfF6ezs/H/aJenzfL43K53G6b9Wq1nC/X23WzXK+K/Xq1LvfL1XJZ7NerxbRczufT6bRcLheL2XQymUwm08l4NBrNxuPxaDQaDIYD/9FwOBwO+v1+v9/r9Xq9bre712s2m81ms9FotBqNWr1eq9VqtWq1WqVSqVQqlXK5XC6Xy+VSqVQqFf+jUqnU67VardFodNrNbrez1+v1+4PBcDQajyaT6XQ2m81ms9l8Pp/P5/P5fD6fz+fz+Xw+3z/zC2y0S5D64x8gAAAAAElFTkSuQmCC'), auto;
+}
+
+/* Make the car turn "Red" when you hover over links (Optional) */
+a:hover, button:hover, .btn:hover {
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAhFBMVEUAAAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD///+l2QwdAAAALnRSTlMAAAwXHR8gISInMDEyMzU3ODk8P0BDREVGR0hJSktMTk9QUVJTVlhZW1xdXl9gYw04mXwAAAABYktHRACIBR1IAAAAB3RJTUUH6AwUFTAC6y5D/gAAAQpJREFUOMuVk9cSgjAMRQ/qFaTYsCCiiL13//+vjJCSbF/2fXgzk3TbnCRJ/l15N81iO4/D/LkfF9M8i9u752FzO8+3y/2wud8f5vX5dDovD6fXfF6ezs/H/aJenzfL43K53G6b9Wq1nC/X23WzXK+K/Xq1LvfL1XJZ7NerxbRczufT6bRcLheL2XQymUwm08l4NBrNxuPxaDQaDIYD/9FwOBwO+v1+v9/r9Xq9bre712s2m81ms9FotBqNWr1eq9VqtWq1WqVSqVQqlXK5XC6Xy+VSqVQqFf+jUqnU67VardFodNrNbrez1+v1+4PBcDQajyaT6XQ2m81ms9l8Pp/P5/P5fD6fz+fz+Xw+3z/zC2y0S5D64x8gAAAAAElFTkSuQmCC'), pointer;
+}
+
+/* Hide default cursor on EVERYTHING */
+* {
+    cursor: none !important; 
+}
+
+#player-rocket {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 0; /* Wrapper has no size, only the emoji does */
+    height: 0;
+    
+    font-size: 2.5rem;
+    z-index: 10000;
+    
+    /* CRITICAL: Allows clicks to pass through */
+    pointer-events: none; 
+    
+    /* Center origin for rotation */
+    transform-origin: center center;
+    
+    /* Only animate the glow/color via CSS. Movement is handled by JS */
+    transition: filter 0.2s ease;
+    will-change: transform;
+    
+    filter: drop-shadow(0 0 10px #38bdf8);
+}
+
+#player-rocket.hovering {
+    filter: drop-shadow(0 0 25px #f43f5e); /* Red Glow */
+}
+
+/* --- KEYBOARD INTERACTION FIXES --- */
+
+/* 1. Make buttons glow when Rocket is on top */
+/* We chain this with existing hover classes so it looks the same */
+.force-hover {
+    transform: translateY(-5px) scale(1.05) !important;
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.4) !important;
+    border-color: var(--primary) !important;
+    background: rgba(56, 189, 248, 0.1) !important; /* Subtle highlight */
+    transition: all 0.2s ease;
+}
+
+/* 2. Make buttons "Click" (Squish) when pressing Enter */
+.force-click {
+    transform: scale(0.95) !important;
+    box-shadow: 0 0 0 rgba(0,0,0,0) !important; /* Remove shadow to look pressed */
+    transition: transform 0.1s ease !important;
 }
