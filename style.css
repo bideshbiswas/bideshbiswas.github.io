@@ -522,3 +522,92 @@
     box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
     border-color: var(--primary);
 }
+
+/* --- ABOUT & SKILLS LAYOUT --- */
+.about-section {
+    min-height: 80vh; /* Make it substantial but not too long */
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+/* Left Side: Bio */
+.about-bio {
+    flex: 1;
+    min-width: 300px;
+}
+
+.bio-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+}
+
+/* Right Side: Skills Wrapper */
+.skills-wrapper {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(15, 23, 42, 0.6); /* Glass background */
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.skills-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* --- PROGRESS BARS --- */
+.skill-box {
+    margin-bottom: 1.5rem;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.progress-line {
+    height: 10px;
+    width: 100%;
+    background: #0f172a; /* Dark background track */
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden; /* Ensures the inner bar doesn't spill out */
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+
+.progress-line span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+    width: 0%; /* Start at 0 for animation */
+    
+    /* Animation: Slide in over 1.5 seconds */
+    animation: fillBar 1.5s cubic-bezier(0.1, 0.7, 1.0, 0.1) forwards;
+    animation-delay: 0.3s; /* Slight delay so user sees it start */
+    
+    /* Neon Glow */
+    box-shadow: 0 0 10px var(--primary);
+}
+
+/* Keyframes for the Fill Animation */
+@keyframes fillBar {
+    from { width: 0%; }
+    to { width: var(--w); } /* CSS Variable trick handled below */
+}
