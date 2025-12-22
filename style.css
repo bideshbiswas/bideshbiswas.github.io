@@ -671,3 +671,147 @@ a:hover, button:hover, .btn:hover {
     box-shadow: 0 0 0 rgba(0,0,0,0) !important; /* Remove shadow to look pressed */
     transition: transform 0.1s ease !important;
 }
+
+
+/* --- RESEARCH SECTION (NEON GLASS DESIGN) --- */
+.research-section {
+    padding: 100px 10%;
+    /* No background color here so stars show through */
+}
+
+.research-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.research-card {
+    /* Glass Effect */
+    background: rgba(15, 23, 42, 0.6); /* Semi-transparent dark blue */
+    backdrop-filter: blur(12px);       /* Blurs the stars behind it */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 35px;
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy animation */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- HOVER EFFECTS --- */
+.research-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.2); /* Blue Glow */
+}
+
+/* The faint gradient line at the top */
+.research-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.research-card:hover::before {
+    opacity: 1;
+}
+
+/* --- CARD CONTENT --- */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.card-icon {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.1); /* Subtle Icon */
+    transition: 0.3s;
+}
+
+.research-card:hover .card-icon {
+    color: #38bdf8; /* Icon lights up on hover */
+}
+
+/* --- STATUS BADGES --- */
+.status-badge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.upcoming {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.progress {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.published {
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+/* --- TEXT --- */
+.research-card h3 {
+    color: #f1f5f9;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.research-meta {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    font-family: monospace; /* Code-like font */
+}
+
+.research-desc {
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    flex-grow: 1;
+    font-size: 0.95rem;
+}
+
+/* --- TAGS --- */
+.research-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.research-tags span {
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.research-card:hover .research-tags span {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+}

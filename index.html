@@ -68,8 +68,7 @@
     <canvas id="bg-canvas"></canvas>
 
     <nav>
-        <div class="logo">Bidesh Biswas Biki</div>
-        
+        <div class="logo" >Bidesh Biswas Biki</div>        
         <input type="checkbox" id="nav-toggle" class="nav-toggle">
         <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
 
@@ -77,7 +76,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#projects">Research</a></li>
+            <li><a href="#research">Research</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -223,6 +222,63 @@
 
         </div>
     </section>
+<section id="research" class="research-section">
+    <h2 class="section-title"><span>Research</span> & Publications</h2>
+    
+    <div class="research-container">
+        
+        <div class="research-card">
+            <div class="card-header">
+                <i class="fas fa-microchip card-icon"></i>
+                <span class="status-badge upcoming">Upcoming (2026)</span>
+            </div>
+            <h3>Acceleration of Subdomain Solvers using GPGPU</h3>
+            <p class="research-meta">Targeting: <strong>ICAROB 2026</strong></p>
+            <p class="research-desc">
+                High-performance solver for electromagnetic field analysis. Offloading large-scale matrix computations to NVIDIA GPUs to drastically reduce simulation time.
+            </p>
+            <div class="research-tags">
+                <span>CUDA</span>
+                <span>C++</span>
+                <span>FEM</span>
+            </div>
+        </div>
+
+        <div class="research-card">
+            <div class="card-header">
+                <i class="fas fa-network-wired card-icon"></i>
+                <span class="status-badge progress">In Progress</span>
+            </div>
+            <h3>Optimization of ADVENTURE_FullWave System</h3>
+            <p class="research-meta">Collaborators: <strong>University Lab Team</strong></p>
+            <p class="research-desc">
+                Integrating NVIDIA cuDSS into the ADVENTURE system. Achieved 3x speedup and 40% memory reduction compared to legacy CPU solvers.
+            </p>
+            <div class="research-tags">
+                <span>MPI</span>
+                <span>cuDSS</span>
+                <span>HPC</span>
+            </div>
+        </div>
+
+        <div class="research-card">
+            <div class="card-header">
+                <i class="fas fa-book card-icon"></i>
+                <span class="status-badge published">Published (2024)</span>
+            </div>
+            <h3>Parallel Computing Techniques</h3>
+            <p class="research-meta">University of Miyazaki</p>
+            <p class="research-desc">
+                Analysis of performance bottlenecks in iterative solvers with a proposed hybrid MPI-OpenMP approach for better scalability.
+            </p>
+            <div class="research-tags">
+                <span>OpenMP</span>
+                <span>Parallelization</span>
+            </div>
+        </div>
+
+    </div>
+</section>
 <section id="gallery">
     <h2 class="section-title"><span>Life in Japan</span></h2>
     <p style="text-align: center; margin-bottom: 3rem; color: #cbd5e1;">
