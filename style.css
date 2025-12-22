@@ -630,25 +630,23 @@ a:hover, button:hover, .btn:hover {
 
 #player-rocket {
     position: fixed;
-    top: 0; 
+    top: 0;
     left: 0;
-    width: 0; /* Wrapper has no size, only the emoji does */
+    width: 0; 
     height: 0;
-    
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* Adjust size if needed */
     z-index: 10000;
+    pointer-events: none;
     
-    /* CRITICAL: Allows clicks to pass through */
-    pointer-events: none; 
-    
-    /* Center origin for rotation */
-    transform-origin: center center;
-    
-    /* Only animate the glow/color via CSS. Movement is handled by JS */
-    transition: filter 0.2s ease;
+    /* We remove the transform here because JS handles it now */
     will-change: transform;
-    
+    transition: filter 0.2s ease;
     filter: drop-shadow(0 0 10px #38bdf8);
+}
+
+/* Hover Effect: Turns Red & Grows */
+#player-rocket.hovering {
+    filter: drop-shadow(0 0 25px #f43f5e);
 }
 
 #player-rocket.hovering {

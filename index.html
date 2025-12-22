@@ -267,6 +267,17 @@
 <script>
     const rocket = document.getElementById('player-rocket');
     
+    // --- 1. MAIN OFFSET (CALIBRATED) ---
+    // Your perfect values:
+    let offsetX = -37;   
+    let offsetY = 17;  
+
+    // --- 2. HOVER CORRECTION ---
+    // These help keep the nose on the button when the rocket grows big (Scale 1.3).
+    // You can tweak these slightly if it still feels like it drifts when hovering.
+    let hoverCorrectionX = -5;  
+    let hoverCorrectionY = 5;   
+
     // Position Variables
     let currentX = window.innerWidth / 2;
     let currentY = window.innerHeight / 2;
@@ -276,63 +287,75 @@
     // Physics Variables
     let rotation = -45;
     let targetRotation = -45;
-    
-    // SETTINGS
     const lerpSpeed = 0.2;
     const flySpeed = 15;
     const scrollSpeed = 30; 
     
-    // KEYBOARD STATE
     const keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false };
     let hoveredElement = null; 
 
-    // --- MAIN GAME LOOP ---
     function animate() {
         const h = window.innerHeight;
         const w = window.innerWidth;
         const edge = 80;
 
-        // 1. KEYBOARD LOGIC
-        if (keys.ArrowUp) {
-            targetRotation = -45;
+        // KEYBOARD LOGIC
+        if (keys.ArrowUp) { 
+            targetRotation = -45; 
             if (targetY < edge) { 
-                document.documentElement.scrollTop -= scrollSpeed;
+                document.documentElement.scrollTop -= scrollSpeed; 
                 document.body.scrollTop -= scrollSpeed; 
                 targetY = edge; 
-            } else { targetY -= flySpeed; }
+            } else { 
+                targetY -= flySpeed; 
+            } 
         } 
-        else if (keys.ArrowDown) {
-            targetRotation = 135;
-            if (targetY > h - edge) {
-                document.documentElement.scrollTop += scrollSpeed;
+        else if (keys.ArrowDown) { 
+            targetRotation = 135; 
+            if (targetY > h - edge) { 
+                document.documentElement.scrollTop += scrollSpeed; 
                 document.body.scrollTop += scrollSpeed; 
-                targetY = h - edge;
-            } else { targetY += flySpeed; }
+                targetY = h - edge; 
+            } else { 
+                targetY += flySpeed; 
+            } 
         }
-        if (keys.ArrowLeft) {
-            targetRotation = -135;
-            targetX = Math.max(edge, targetX - flySpeed);
+        if (keys.ArrowLeft) { 
+            targetRotation = -135; 
+            targetX = Math.max(edge, targetX - flySpeed); 
         }
-        if (keys.ArrowRight) {
-            targetRotation = 45;
-            targetX = Math.min(w - edge, targetX + flySpeed);
+        if (keys.ArrowRight) { 
+            targetRotation = 45; 
+            targetX = Math.min(w - edge, targetX + flySpeed); 
         }
 
-        // 2. SMOOTH MOVEMENT (Interpolation)
+        // SMOOTH MOVEMENT
         currentX += (targetX - currentX) * lerpSpeed;
         currentY += (targetY - currentY) * lerpSpeed;
         
-        // 3. SMOOTH ROTATION
+        // ROTATION
         let rotDiff = targetRotation - rotation;
         if (rotDiff > 180) rotDiff -= 360;
         if (rotDiff < -180) rotDiff += 360;
         rotation += rotDiff * 0.15;
 
-        // 4. APPLY CSS TO ROCKET
-        let scale = (hoveredElement) ? 1.3 : 1;
-        rocket.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`;
+        // --- CALCULATE FINAL POSITION ---
+        let finalX = currentX + offsetX;
+        let finalY = currentY + offsetY;
+        
+        let scale = 1;
 
-        // 5. COLLISION DETECTION (Auto-Hover for Touch/Keys)
+        // --- APPLY HOVER CORRECTION ---
+        if (hoveredElement) {
+            scale = 1.3;
+            finalX += hoverCorrectionX;
+            finalY += hoverCorrectionY;
+        }
+        
+        rocket.style.transform = `translate3d(${finalX}px, ${finalY}px, 0) translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`;
+
+        // COLLISION DETECTION
+        // We use currentX/currentY (the true mouse position) for detection
         let elementBelow = document.elementFromPoint(currentX, currentY);
         let clickable = elementBelow ? elementBelow.closest('a, button, input, textarea, .skill-box') : null;
 
@@ -354,11 +377,8 @@
     }
     animate();
 
-    // --- INPUT LISTENERS ---
-
-    // 1. MOUSE MOVEMENT
+    // INPUT LISTENERS
     document.addEventListener('mousemove', (e) => {
-        // Only move if keyboard isn't active
         if (!keys.ArrowUp && !keys.ArrowDown && !keys.ArrowLeft && !keys.ArrowRight) {
             targetX = e.clientX;
             targetY = e.clientY;
@@ -366,51 +386,35 @@
         }
     });
 
-    // 2. MOBILE TOUCH (The Fix)
-    // "touchmove" fires constantly as you drag your finger
+    document.addEventListener('keydown', (e) => {
+        if (keys.hasOwnProperty(e.key)) { e.preventDefault(); keys[e.key] = true; }
+        if (['Enter', ' '].includes(e.key) && hoveredElement) {
+            e.preventDefault();
+            rocket.style.transform += " scale(0.8)";
+            hoveredElement.classList.add('force-click');
+            setTimeout(() => {
+                rocket.style.transform = rocket.style.transform.replace(" scale(0.8)", "");
+                if(hoveredElement) hoveredElement.classList.remove('force-click');
+            }, 150);
+            hoveredElement.click();
+        }
+    });
+
+    document.addEventListener('keyup', (e) => { if (keys.hasOwnProperty(e.key)) keys[e.key] = false; });
+
     document.addEventListener('touchmove', (e) => {
-        // e.touches[0] gets the position of the first finger
         targetX = e.touches[0].clientX;
         targetY = e.touches[0].clientY;
         targetRotation = -45;
-    }, { passive: true }); // passive: true keeps scrolling smooth
+    }, { passive: true });
 
-    // Also update on initial tap
     document.addEventListener('touchstart', (e) => {
         targetX = e.touches[0].clientX;
         targetY = e.touches[0].clientY;
         targetRotation = -45;
     }, { passive: true });
 
-    // 3. KEYBOARD INPUT
-    document.addEventListener('keydown', (e) => {
-        if (keys.hasOwnProperty(e.key)) {
-            e.preventDefault(); 
-            keys[e.key] = true; 
-        }
-        // Click Interaction (Enter/Space)
-        if (['Enter', ' '].includes(e.key) && hoveredElement) {
-            e.preventDefault();
-            triggerClickAnimation();
-            hoveredElement.click();
-        }
-    });
-
-    document.addEventListener('keyup', (e) => {
-        if (keys.hasOwnProperty(e.key)) { keys[e.key] = false; }
-    });
-
-    // --- ANIMATION HELPERS ---
-    function triggerClickAnimation() {
-        rocket.style.transform += " scale(0.8)";
-        if(hoveredElement) hoveredElement.classList.add('force-click');
-        
-        setTimeout(() => {
-            rocket.style.transform = rocket.style.transform.replace(" scale(0.8)", "");
-            if(hoveredElement) hoveredElement.classList.remove('force-click');
-        }, 150);
-    }
-
+    // VISUAL CLICK EFFECTS
     document.addEventListener('mousedown', () => {
         rocket.style.filter = "drop-shadow(0 0 5px #38bdf8)";
     });
