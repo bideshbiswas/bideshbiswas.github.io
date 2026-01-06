@@ -6,69 +6,18 @@
     <title>Bidesh Biswas Biki | Researcher Portfolio</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f172a%22/><text x=%2250%22 y=%2275%22 font-family=%22Arial, sans-serif%22 font-size=%2275%22 font-weight=%22900%22 fill=%22%2338bdf8%22 text-anchor=%22middle%22>B</text></svg>">
-
-    <style>
-        /* --- ADDED: STYLES FOR STARS & SMOKE --- */
-        #bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: #0f172a; /* Fallback Color */
-        }
-        
-        #player-rocket {
-            position: fixed;
-            top: 0;
-            left: 0;
-            /* Ensure it has size so it doesn't disappear if JS fails */
-            width: 50px; 
-            height: 50px;
-            font-size: 2.5rem;
-            z-index: 10000;
-            pointer-events: none;
-            will-change: transform;
-            transition: filter 0.2s ease;
-            filter: drop-shadow(0 0 10px #38bdf8);
-            /* Center the text inside the div */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #player-rocket.hovering {
-            filter: drop-shadow(0 0 25px #f43f5e);
-        }
-        
-        .smoke {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: rgba(180, 180, 180, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            animation: puff 0.8s forwards;
-        }
-
-        @keyframes puff {
-            0% { transform: scale(0.5); opacity: 0.6; }
-            100% { transform: scale(2.5); opacity: 0; }
-        }
-    </style>
 </head>
 <body>
 
     <canvas id="bg-canvas"></canvas>
 
     <nav>
-        <div class="logo" >Bidesh Biswas Biki</div>        
+        <div class="logo">Bidesh Biswas Biki</div>        
         <input type="checkbox" id="nav-toggle" class="nav-toggle">
         <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
 
@@ -81,118 +30,58 @@
         </ul>
     </nav>
 
-<section id="home" class="hero">
-    <div class="hero-container">
-        
-        <div class="hero-text">
-            <p class="greeting">Hello, I'm</p>
-            <h1>Bidesh <br><span>Biswas Biki</span></h1>
-            <p class="bio">
-                PhD Student & Researcher specializing in HPC, GPGPU Computing, and Electromagnetic Simulation.
-            </p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn">View Research</a>
-                <a href="#contact" class="btn btn-outline">Contact Me</a>
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <p class="greeting">Hello, I'm</p>
+                <h1>Bidesh <br><span>Biswas Biki</span></h1>
+                <p class="bio">
+                    PhD Student & Researcher specializing in HPC, GPGPU Computing, and Electromagnetic Simulation.
+                </p>
+                <div class="hero-buttons">
+                    <a href="cv.pdf" download="Bidesh_Biswas_CV" class="btn">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                    
+                    <a href="#projects" class="btn btn-outline">View Research</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/profile.jpeg" alt="Bidesh Biswas Biki">
             </div>
         </div>
+    </section>
 
-        <div class="hero-image">
-            <img src="images/profile.jpeg" alt="Bidesh Biswas Biki">
-        </div>
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-bio">
+                <h2 class="section-title" style="text-align: left;">About <span>Me</span></h2>
+                <p>
+                    I am a <strong>Ph.D. Researcher</strong> based in Japan, originally from Bangladesh. My work bridges the gap between <strong>High-Performance Computing (HPC)</strong> and scientific simulation.
+                </p>
+                <br>
+                <div class="bio-stats">
+                    <div><h3 style="color: var(--primary); font-size: 2.5rem;">5+</h3><span>Years Exp.</span></div>
+                    <div><h3 style="color: var(--primary); font-size: 2.5rem;">10+</h3><span>Projects</span></div>
+                    <div><h3 style="color: var(--primary); font-size: 2.5rem;">3+</h3><span>Papers</span></div>
+                </div>
+            </div>
 
-    </div>
-</section>
-
-<section id="about" class="about-section">
-    <div class="about-container">
-        
-        <div class="about-bio">
-            <h2 class="section-title" style="text-align: left;">About <span>Me</span></h2>
-            <p>
-                I am a <strong>Ph.D. Researcher</strong> based in Japan, originally from Bangladesh. My work bridges the gap between <strong>High-Performance Computing (HPC)</strong> and scientific simulation.
-            </p>
-            <br>
-            <p>
-                With a background in both <strong>Computer Science</strong> and <strong>Web Development</strong>, I have spent the last few years implementing GPGPU solvers for electromagnetic field analysis while maintaining a passion for building dynamic web applications.
-            </p>
-            <br>
-            <div class="bio-stats">
-                <div>
-                    <h3 style="color: var(--primary); font-size: 2.5rem;">5+</h3>
-                    <span>Years Exp.</span>
-                </div>
-                <div>
-                    <h3 style="color: var(--primary); font-size: 2.5rem;">10+</h3>
-                    <span>Projects</span>
-                </div>
-                <div>
-                    <h3 style="color: var(--primary); font-size: 2.5rem;">3+</h3>
-                    <span>Papers</span>
-                </div>
+            <div class="skills-wrapper">
+                <h3 class="skills-title">Professional Skills</h3>
+                <div class="skill-box"><div class="skill-info"><span>C++ / MPI (HPC)</span><span>90%</span></div><div class="progress-line" data-width="90%"><span></span></div></div>
+                <div class="skill-box"><div class="skill-info"><span>CUDA / GPGPU</span><span>85%</span></div><div class="progress-line" data-width="85%"><span></span></div></div>
+                <div class="skill-box"><div class="skill-info"><span>Python & ML</span><span>80%</span></div><div class="progress-line" data-width="80%"><span></span></div></div>
+                <div class="skill-box"><div class="skill-info"><span>HTML5 / CSS3</span><span>95%</span></div><div class="progress-line" data-width="95%"><span></span></div></div>
+                <div class="skill-box"><div class="skill-info"><span>Django / PHP</span><span>70%</span></div><div class="progress-line" data-width="70%"><span></span></div></div>
             </div>
         </div>
-
-        <div class="skills-wrapper">
-            <h3 class="skills-title">Professional Skills</h3>
-            
-            <div class="skill-box">
-                <div class="skill-info">
-                    <span>C++ / MPI (HPC)</span>
-                    <span>90%</span>
-                </div>
-                <div class="progress-line" data-width="90%">
-                    <span></span>
-                </div>
-            </div>
-
-            <div class="skill-box">
-                <div class="skill-info">
-                    <span>CUDA / GPGPU</span>
-                    <span>85%</span>
-                </div>
-                <div class="progress-line" data-width="85%">
-                    <span></span>
-                </div>
-            </div>
-
-            <div class="skill-box">
-                <div class="skill-info">
-                    <span>Python & ML</span>
-                    <span>80%</span>
-                </div>
-                <div class="progress-line" data-width="80%">
-                    <span></span>
-                </div>
-            </div>
-
-            <div class="skill-box">
-                <div class="skill-info">
-                    <span>HTML5 / CSS3</span>
-                    <span>95%</span>
-                </div>
-                <div class="progress-line" data-width="95%">
-                    <span></span>
-                </div>
-            </div>
-
-            <div class="skill-box">
-                <div class="skill-info">
-                    <span>Django / PHP</span>
-                    <span>70%</span>
-                </div>
-                <div class="progress-line" data-width="70%">
-                    <span></span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+    </section>
 
     <section id="projects">
         <h2 class="section-title"><span>Projects</span></h2>
         <div class="projects-grid">
-            
             <div class="project-card">
                 <div class="card-img img-gpgpu"></div>
                 <div class="card-content">
@@ -201,411 +90,90 @@
                     <p>Researching subdomain solvers for high-frequency electromagnetic field analysis. Targeting submission for ICAROB 2026.</p>
                 </div>
             </div>
-
             <div class="project-card">
                 <div class="card-img img-sim"></div>
                 <div class="card-content">
                     <span class="tech-stack">ADVENTURE • cuDSS • MPI</span>
                     <h3>Large Scale Simulation</h3>
-                    <p>Optimization of the ADVENTURE_FullWave system using NVIDIA cuDSS to improve solver speed and memory management.</p>
+                    <p>Optimization of the ADVENTURE_FullWave system using NVIDIA cuDSS.</p>
                 </div>
             </div>
-
             <div class="project-card">
                 <div class="card-img img-vlog"></div>
                 <div class="card-content">
                     <span class="tech-stack">YouTube • Content Creation</span>
                     <h3>Life in Japan</h3>
-                    <p>A personal project documenting life as an international PhD student couple in Japan. Vlogs covering travel and culture.</p>
+                    <p>A personal project documenting life as an international PhD student couple in Japan.</p>
                 </div>
             </div>
-
         </div>
     </section>
-<section id="research" class="research-section">
-    <h2 class="section-title"><span>Research</span> & Publications</h2>
-    
-    <div class="research-container">
-        
-        <div class="research-card">
-            <div class="card-header">
-                <i class="fas fa-microchip card-icon"></i>
-                <span class="status-badge upcoming">Upcoming (2026)</span>
-            </div>
-            <h3>Acceleration of Subdomain Solvers using GPGPU</h3>
-            <p class="research-meta">Targeting: <strong>ICAROB 2026</strong></p>
-            <p class="research-desc">
-                High-performance solver for electromagnetic field analysis. Offloading large-scale matrix computations to NVIDIA GPUs to drastically reduce simulation time.
-            </p>
-            <div class="research-tags">
-                <span>CUDA</span>
-                <span>C++</span>
-                <span>FEM</span>
-            </div>
-        </div>
 
-        <div class="research-card">
-            <div class="card-header">
-                <i class="fas fa-network-wired card-icon"></i>
-                <span class="status-badge progress">In Progress</span>
+    <section id="research" class="research-section">
+        <h2 class="section-title"><span>Research</span> & Publications</h2>
+        <div class="research-container">
+            <div class="research-card">
+                <div class="card-header"><i class="fas fa-microchip card-icon"></i><span class="status-badge upcoming">Upcoming (2026)</span></div>
+                <h3>Acceleration of Subdomain Solvers using GPGPU</h3>
+                <p class="research-meta">Targeting: <strong>ICAROB 2026</strong></p>
+                <p class="research-desc">High-performance solver for electromagnetic field analysis using NVIDIA GPUs.</p>
+                <div class="research-tags"><span>CUDA</span><span>C++</span><span>FEM</span></div>
             </div>
-            <h3>Optimization of ADVENTURE_FullWave System</h3>
-            <p class="research-meta">Collaborators: <strong>University Lab Team</strong></p>
-            <p class="research-desc">
-                Integrating NVIDIA cuDSS into the ADVENTURE system. Achieved 3x speedup and 40% memory reduction compared to legacy CPU solvers.
-            </p>
-            <div class="research-tags">
-                <span>MPI</span>
-                <span>cuDSS</span>
-                <span>HPC</span>
+            <div class="research-card">
+                <div class="card-header"><i class="fas fa-network-wired card-icon"></i><span class="status-badge progress">In Progress</span></div>
+                <h3>Optimization of ADVENTURE_FullWave System</h3>
+                <p class="research-meta">Collaborators: <strong>University Lab Team</strong></p>
+                <p class="research-desc">Integrating NVIDIA cuDSS into the ADVENTURE system. Achieved 3x speedup.</p>
+                <div class="research-tags"><span>MPI</span><span>cuDSS</span><span>HPC</span></div>
+            </div>
+            <div class="research-card">
+                <div class="card-header"><i class="fas fa-book card-icon"></i><span class="status-badge published">Published (2024)</span></div>
+                <h3>Parallel Computing Techniques</h3>
+                <p class="research-meta">University of Miyazaki</p>
+                <p class="research-desc">Analysis of performance bottlenecks in iterative solvers.</p>
+                <div class="research-tags"><span>OpenMP</span><span>Parallelization</span></div>
             </div>
         </div>
+    </section>
 
-        <div class="research-card">
-            <div class="card-header">
-                <i class="fas fa-book card-icon"></i>
-                <span class="status-badge published">Published (2024)</span>
-            </div>
-            <h3>Parallel Computing Techniques</h3>
-            <p class="research-meta">University of Miyazaki</p>
-            <p class="research-desc">
-                Analysis of performance bottlenecks in iterative solvers with a proposed hybrid MPI-OpenMP approach for better scalability.
-            </p>
-            <div class="research-tags">
-                <span>OpenMP</span>
-                <span>Parallelization</span>
-            </div>
+    <section id="gallery">
+        <h2 class="section-title"><span>Life in Japan</span></h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=2070&auto=format&fit=crop" alt="Japan"><div class="overlay"><span>Exploring Tokyo</span></div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" alt="University"><div class="overlay"><span>Campus Life</span></div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=1953&auto=format&fit=crop" alt="Vlogging"><div class="overlay"><span>Vlogging Setup</span></div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=2070&auto=format&fit=crop" alt="Sunset"><div class="overlay"><span>Miyazaki Sunset</span></div></div>
         </div>
+    </section>
 
-    </div>
-</section>
-<section id="gallery">
-    <h2 class="section-title"><span>Life in Japan</span></h2>
-    <p style="text-align: center; margin-bottom: 3rem; color: #cbd5e1;">
-        Snapshots from my journey as a PhD student and vlogger.
-    </p>
-
-    <div class="gallery-grid">
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=2070&auto=format&fit=crop" alt="Japan Scenery">
-            <div class="overlay">
-                <span>Exploring Tokyo</span>
+    <section id="contact" class="contact-section">
+        <h2 class="section-title"><span>Contact Me</span></h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Let's Connect</h3>
+                <p>Open to discussing research, HPC collaborations, or life in Japan.</p>
+                <div class="info-item"><i class="fas fa-envelope"></i><span>bideshbiswas@ymail.com</span></div>
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i><span>Miyazaki, Japan</span></div>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                </div>
             </div>
+            <form action="#" method="POST" class="contact-form">
+                <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+                <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
+                <div class="form-group"><textarea name="message" rows="5" placeholder="Your Message" required></textarea></div>
+                <button type="submit" class="btn submit-btn">Send Message</button>
+            </form>
         </div>
+        <footer><p>&copy; 2025 Bidesh Biswas Biki</p></footer>
+    </section>
 
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" alt="University Life">
-            <div class="overlay">
-                <span>Campus Life</span>
-            </div>
-        </div>
+    <div id="player-rocket">🚀</div>
 
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=1953&auto=format&fit=crop" alt="Vlogging Setup">
-            <div class="overlay">
-                <span>Vlogging Setup</span>
-            </div>
-        </div>
+    <script src="script.js"></script>
 
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=2070&auto=format&fit=crop" alt="Miyazaki Sunset">
-            <div class="overlay">
-                <span>Miyazaki Sunset</span>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="contact" class="contact-section">
-    <h2 class="section-title"><span>Contact Me</span></h2>
-    
-    <div class="contact-container">
-        <div class="contact-info">
-            <h3>Let's Connect</h3>
-            <p>I am always open to discussing new research, HPC collaborations, or just a friendly chat about life in Japan.</p>
-            
-            <div class="info-item">
-                <i class="fas fa-envelope"></i>
-                <span>bideshbiswas@ymail.com</span>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Miyazaki, Japan</span>
-            </div>
-            
-            <div class="social-links">
-    <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank" class="social-icon" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-
-    <a href="https://github.com/YOUR_USERNAME" target="_blank" class="social-icon" title="GitHub">
-        <i class="fab fa-github"></i>
-    </a>
-
-    <a href="https://youtube.com/@YOUR_CHANNEL" target="_blank" class="social-icon" title="YouTube">
-        <i class="fab fa-youtube"></i>
-    </a>
-
-    <a href="https://facebook.com/YOUR_PROFILE" target="_blank" class="social-icon" title="Facebook">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-
-    <a href="https://instagram.com/YOUR_PROFILE" target="_blank" class="social-icon" title="Instagram">
-        <i class="fab fa-instagram"></i>
-    </a>
-</div>
-        </div>
-
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
-            <div class="form-group">
-                <input type="text" name="name" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn submit-btn">Send Message</button>
-        </form>
-    </div>
-
-    
-
-    <footer>
-        <p>&copy; 2025 Bidesh Biswas Biki</p>
-    </footer>
-</section>
-
-<div id="player-rocket">🚀</div>
-
-<script>
-    // I WRAPPED THIS IN { } TO PREVENT VARIABLE CONFLICTS
-    {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({
-            canvas: document.querySelector('#bg-canvas'),
-            alpha: true
-        });
-
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.position.setZ(30);
-
-        const geometry = new THREE.BufferGeometry();
-        const count = 5000;
-        const positions = new Float32Array(count * 3);
-
-        for(let i = 0; i < count * 3; i++) {
-            positions[i] = (Math.random() - 0.5) * 100; 
-        }
-
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const material = new THREE.PointsMaterial({
-            size: 0.1, sizeAttenuation: true, color: 0x38bdf8, transparent: true, opacity: 0.8
-        });
-
-        const starField = new THREE.Points(geometry, material);
-        scene.add(starField);
-
-        // RENAMED VARIABLES TO 'star...' TO FIX CONFLICT
-        let starMouseX = 0, starMouseY = 0;
-        let starTargetX = 0, starTargetY = 0;
-        const windowHalfX = window.innerWidth / 2;
-        const windowHalfY = window.innerHeight / 2;
-
-        document.addEventListener('mousemove', (event) => {
-            starMouseX = (event.clientX - windowHalfX);
-            starMouseY = (event.clientY - windowHalfY);
-        });
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        const clock = new THREE.Clock();
-        function animate3D() {
-            const elapsedTime = clock.getElapsedTime();
-            starField.rotation.y = elapsedTime * 0.05; 
-            
-            starTargetX = starMouseX * 0.001;
-            starTargetY = starMouseY * 0.001;
-            
-            starField.rotation.y += 0.5 * (starTargetX - starField.rotation.y);
-            starField.rotation.x += 0.5 * (starTargetY - starField.rotation.x);
-            
-            renderer.render(scene, camera);
-            requestAnimationFrame(animate3D);
-        }
-        animate3D();
-    }
-</script>
-
-<script>
-    const rocket = document.getElementById('player-rocket');
-    
-    // --- CREATE DEBUG DOT (To see the real mouse position) ---
-    const dot = document.createElement('div');
-    dot.style.position = 'fixed';
-    dot.style.width = '6px';
-    dot.style.height = '6px';
-    dot.style.background = 'red';
-    dot.style.borderRadius = '50%';
-    dot.style.zIndex = '10001';
-    dot.style.pointerEvents = 'none';
-    dot.style.transform = 'translate(-50%, -50%)'; 
-    document.body.appendChild(dot);
-    
-    // ==========================================
-    //       🚀 CALIBRATION ZONE 🚀
-    // ==========================================
-    
-    // 1. CHANGE THESE NUMBERS UNTIL NOSE HITS RED DOT
-    // Since we added a 50px box, try starting with these:
-    let offsetX = 0;    // Try changing to 10 or -10
-    let offsetY = 10;   // Try changing to 20 or -20
-
-    // 2. HOVER CORRECTION
-    let hoverCorrectionX = -5;  
-    let hoverCorrectionY = 5;   
-
-    // 3. SMOKE ALIGNMENT
-    let smokeOffsetX = -15;  
-    let smokeOffsetY = 15;   
-    // ==========================================
-
-    // Position Variables
-    let currentX = window.innerWidth / 2;
-    let currentY = window.innerHeight / 2;
-    let rTargetX = currentX;
-    let rTargetY = currentY;
-    
-    // Physics Variables
-    let rotation = -45;
-    let targetRotation = -45;
-    const lerpSpeed = 0.2;
-    const flySpeed = 15;
-    const scrollSpeed = 30; 
-    
-    let smokeCounter = 0;
-    const keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false };
-    let hoveredElement = null; 
-
-    function createSmoke() {
-        const smoke = document.createElement('div');
-        smoke.classList.add('smoke');
-        
-        const visualX = currentX + offsetX;
-        const visualY = currentY + offsetY;
-        const rad = (rotation - 45) * (Math.PI / 180); 
-        const tailDistance = 25; 
-        
-        const smokeBaseX = visualX - Math.cos(rad) * tailDistance;
-        const smokeBaseY = visualY - Math.sin(rad) * tailDistance;
-        const randomX = (Math.random() - 0.5) * 10;
-        const randomY = (Math.random() - 0.5) * 10;
-
-        smoke.style.left = (smokeBaseX + randomX + smokeOffsetX) + 'px';
-        smoke.style.top = (smokeBaseY + randomY + smokeOffsetY) + 'px';
-        
-        document.body.appendChild(smoke);
-        setTimeout(() => { smoke.remove(); }, 800);
-    }
-
-    function animate() {
-        const h = window.innerHeight;
-        const w = window.innerWidth;
-        const edge = 80;
-
-        // KEYBOARD
-        if (keys.ArrowUp) { targetRotation = -45; if (rTargetY < edge) { document.documentElement.scrollTop -= scrollSpeed; document.body.scrollTop -= scrollSpeed; rTargetY = edge; } else { rTargetY -= flySpeed; } } 
-        else if (keys.ArrowDown) { targetRotation = 135; if (rTargetY > h - edge) { document.documentElement.scrollTop += scrollSpeed; document.body.scrollTop += scrollSpeed; rTargetY = h - edge; } else { rTargetY += flySpeed; } }
-        if (keys.ArrowLeft) { targetRotation = -135; rTargetX = Math.max(edge, rTargetX - flySpeed); }
-        if (keys.ArrowRight) { targetRotation = 45; rTargetX = Math.min(w - edge, rTargetX + flySpeed); }
-
-        // MOVEMENT
-        currentX += (rTargetX - currentX) * lerpSpeed;
-        currentY += (rTargetY - currentY) * lerpSpeed;
-        
-        // DEBUG DOT FOLLOWS TRUE MOUSE
-        dot.style.left = currentX + 'px';
-        dot.style.top = currentY + 'px';
-
-        let rotDiff = targetRotation - rotation;
-        if (rotDiff > 180) rotDiff -= 360;
-        if (rotDiff < -180) rotDiff += 360;
-        rotation += rotDiff * 0.15;
-
-        // SMOKE
-        const dist = Math.hypot(rTargetX - currentX, rTargetY - currentY);
-        const isMoving = dist > 2;
-        if (isMoving) {
-            smokeCounter++;
-            if (smokeCounter % 4 === 0) { createSmoke(); }
-        }
-
-        // POSITION
-        let finalX = currentX + offsetX;
-        let finalY = currentY + offsetY;
-        let scale = 1;
-
-        if (hoveredElement) {
-            scale = 1.3;
-            finalX += hoverCorrectionX;
-            finalY += hoverCorrectionY;
-        }
-        
-        rocket.style.transform = `translate3d(${finalX}px, ${finalY}px, 0) translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`;
-
-        // COLLISION
-        let elementBelow = document.elementFromPoint(currentX, currentY);
-        let clickable = elementBelow ? elementBelow.closest('a, button, input, textarea, .skill-box') : null;
-
-        if (clickable) {
-            if (hoveredElement !== clickable) {
-                hoveredElement = clickable;
-                rocket.classList.add('hovering');
-                clickable.classList.add('force-hover'); 
-            }
-        } else {
-            if (hoveredElement) {
-                hoveredElement.classList.remove('force-hover');
-                hoveredElement = null;
-                rocket.classList.remove('hovering');
-            }
-        }
-        requestAnimationFrame(animate);
-    }
-    animate();
-
-    // LISTENERS
-    document.addEventListener('mousemove', (e) => {
-        if (!keys.ArrowUp && !keys.ArrowDown && !keys.ArrowLeft && !keys.ArrowRight) {
-            rTargetX = e.clientX;
-            rTargetY = e.clientY;
-            targetRotation = -45;
-        }
-    });
-    document.addEventListener('keydown', (e) => {
-        if (keys.hasOwnProperty(e.key)) { e.preventDefault(); keys[e.key] = true; }
-        if (['Enter', ' '].includes(e.key) && hoveredElement) {
-            e.preventDefault();
-            rocket.style.transform += " scale(0.8)";
-            hoveredElement.classList.add('force-click');
-            setTimeout(() => {
-                rocket.style.transform = rocket.style.transform.replace(" scale(0.8)", "");
-                if(hoveredElement) hoveredElement.classList.remove('force-click');
-            }, 150);
-            hoveredElement.click();
-        }
-    });
-    document.addEventListener('keyup', (e) => { if (keys.hasOwnProperty(e.key)) keys[e.key] = false; });
-    document.addEventListener('touchmove', (e) => { rTargetX = e.touches[0].clientX; rTargetY = e.touches[0].clientY; targetRotation = -45; }, { passive: true });
-    document.addEventListener('touchstart', (e) => { rTargetX = e.touches[0].clientX; rTargetY = e.touches[0].clientY; targetRotation = -45; }, { passive: true });
-    document.addEventListener('mousedown', () => { rocket.style.filter = "drop-shadow(0 0 5px #38bdf8)"; });
-    document.addEventListener('mouseup', () => { rocket.style.filter = "drop-shadow(0 0 15px #38bdf8)"; });
-</script>
 </body>
 </html>
