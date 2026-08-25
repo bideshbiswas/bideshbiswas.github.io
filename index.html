@@ -44,7 +44,7 @@
                         <i class="fas fa-download"></i> Download CV
                     </a>
                     
-                    <a href="#projects" class="btn btn-outline">View Research</a>
+                    <a href="#research" class="btn btn-outline">View Research</a>
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
             </div>
@@ -54,31 +54,77 @@
         </div>
     </section>
 
-    <section id="about" class="about-section">
+  <section id="about" class="about-section">
+        
+        <!-- Hover Effects for Education Cards -->
+        <style>
+            .edu-card {
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease !important;
+            }
+            .edu-card:hover {
+                transform: translateY(-8px) scale(1.02) !important;
+                box-shadow: 0 15px 35px rgba(56, 189, 248, 0.25) !important;
+                border-color: var(--primary) !important;
+            }
+        </style>
+
         <div class="about-container">
+            
+            <!-- Left Column: Bio & Education -->
             <div class="about-bio">
                 <h2 class="section-title" style="text-align: left;">About <span>Me</span></h2>
-            <p style="text-align: justify; text-justify: inter-word;">
-                An adaptable researcher and developer with expertise in <strong>high-performance computing, software development and system analysis</strong>. Passionate about leveraging <strong>C, Python and GPU acceleration</strong> to solve complex computational problems. Eager to apply my background in <strong>parallel processing</strong> within an innovative IT environment.
-            </p>
-                <br>
-       <div class="bio-stats" style="display: flex; gap: 1rem; margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem;">
-                    <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); padding: 1rem; border-radius: 12px; text-align: center; flex: 1;">
-                        <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 0.2rem;">8</h3>
-                        <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Peer-Reviewed</span>
-                    </div>
-                    <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); padding: 1rem; border-radius: 12px; text-align: center; flex: 1;">
-                        <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 0.2rem;">3</h3>
-                        <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Core Projects</span>
-                    </div>
-                    <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); padding: 1rem; border-radius: 12px; text-align: center; flex: 1;">
-                        <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 0.2rem;">3</h3>
-                        <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Degrees</span>
+                <p style="text-align: justify; text-justify: inter-word;">
+                    An adaptable researcher and developer with expertise in <strong>high-performance computing, software development and system analysis</strong>. Passionate about leveraging <strong>C, Python and GPU acceleration</strong> to solve complex computational problems. Eager to apply my background in <strong>parallel processing</strong> within an innovative IT environment.
+                </p>
+                
+                <!-- Educational Background Section -->
+                <div style="margin-top: 1.5rem;">
+                    <h3 class="skills-title" style="font-size: 1.2rem; margin-bottom: 1rem; color: #fff; display: inline-block; border-bottom: 2px solid var(--primary); padding-bottom: 0.3rem;">Educational Background</h3>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        
+                        <!-- Ph.D. -->
+                        <div class="edu-card force-hover-target" style="background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(56, 189, 248, 0.3); border-top: 3px solid var(--primary); padding: 1.2rem 0.8rem; border-radius: 10px; text-align: center; flex: 1; min-width: 140px; display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                            <h4 style="color: #fff; font-size: 0.9rem; margin-bottom: 0.4rem; font-weight: 700; line-height: 1.3;">PhD, Interdisciplinary Graduate School of Agriculture & Eng.</h4>
+                            <p style="color: var(--primary); font-size: 0.75rem; font-weight: 600; margin-bottom: 0.8rem;">
+                                University of Miyazaki<br>
+                                <span style="color: var(--text-muted); font-weight: 500;">Miyazaki, Japan</span>
+                            </p>
+                            <div style="margin-top: auto;">
+                                <span style="font-size: 0.65rem; color: #fff; background: linear-gradient(90deg, var(--primary), var(--secondary)); padding: 4px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">10/2024 – Present</span>
+                            </div>
+                        </div>
+
+                        <!-- Master's -->
+                        <div class="edu-card force-hover-target" style="background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(56, 189, 248, 0.3); border-top: 3px solid var(--primary); padding: 1.2rem 0.8rem; border-radius: 10px; text-align: center; flex: 1; min-width: 140px; display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                            <h4 style="color: #fff; font-size: 0.9rem; margin-bottom: 0.4rem; font-weight: 700; line-height: 1.3;">MSc, Mechanical System and Informatics</h4>
+                            <p style="color: var(--primary); font-size: 0.75rem; font-weight: 600; margin-bottom: 0.8rem;">
+                                University of Miyazaki<br>
+                                <span style="color: var(--text-muted); font-weight: 500;">Miyazaki, Japan</span>
+                            </p>
+                            <div style="margin-top: auto;">
+                                <span style="font-size: 0.65rem; color: #fff; background: linear-gradient(90deg, var(--primary), var(--secondary)); padding: 4px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">10/2022 – 09/2024</span>
+                            </div>
+                        </div>
+
+                        <!-- Bachelor's -->
+                        <div class="edu-card force-hover-target" style="background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(56, 189, 248, 0.3); border-top: 3px solid var(--primary); padding: 1.2rem 0.8rem; border-radius: 10px; text-align: center; flex: 1; min-width: 140px; display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                            <h4 style="color: #fff; font-size: 0.9rem; margin-bottom: 0.4rem; font-weight: 700; line-height: 1.3;">BSc, Computer Science and Engineering</h4>
+                            <p style="color: var(--primary); font-size: 0.75rem; font-weight: 600; margin-bottom: 0.8rem;">
+                                Daffodil International University<br>
+                                <span style="color: var(--text-muted); font-weight: 500;">Dhaka, Bangladesh</span>
+                            </p>
+                            <div style="margin-top: auto;">
+                                <span style="font-size: 0.65rem; color: #fff; background: linear-gradient(90deg, var(--primary), var(--secondary)); padding: 4px 10px; border-radius: 20px; text-transform: uppercase; font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">01/2017 – 12/2020</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-    <div class="skills-wrapper">
+            <!-- Right Column: Professional Skills -->
+            <div class="skills-wrapper">
                 <h3 class="skills-title">Professional Skills</h3>
                 
                 <div class="skill-box">

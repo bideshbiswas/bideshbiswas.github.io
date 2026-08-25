@@ -48,9 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const rocket = document.getElementById('player-rocket');
     
     // --- CALIBRATION ---
-    let offsetX = 0; let offsetY = 10;   
-    let hoverCorrectionX = -5; let hoverCorrectionY = 5;   
-    let smokeOffsetX = -15; let smokeOffsetY = 15;   
+// --- CALIBRATION (Updated for precision) ---
+    let offsetX = 0; let offsetY = 25;   
+    let hoverCorrectionX = 0; let hoverCorrectionY = 7;   
+    let smokeOffsetX = -5; let smokeOffsetY = 5;   
 
     let currentX = window.innerWidth / 2; let currentY = window.innerHeight / 2;
     let rTargetX = currentX; let rTargetY = currentY;
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lerpSpeed = 0.2; const flySpeed = 15; const scrollSpeed = 30; 
     let smokeCounter = 0;
     const keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false };
-    let hoveredElement = null; 
+    let hoveredElement = null;
 
     function createSmoke() {
         const smoke = document.createElement('div');
