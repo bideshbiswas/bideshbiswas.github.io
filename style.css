@@ -334,3 +334,26 @@ section { padding: 6rem 10%; }
     letter-spacing: 0.5px;
     font-weight: 600;
 }
+
+
+
+
+/* --- Skill Box Hover Interactions --- */
+.skill-box {
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.skill-box:hover {
+    background: rgba(56, 189, 248, 0.05);
+    transform: translateX(5px);
+}
+
+.skill-box:hover .skill-info span:last-child {
+    color: var(--primary) !important;
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+}
+
+
+
