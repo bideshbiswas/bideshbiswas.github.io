@@ -290,8 +290,7 @@
                 <a href="https://www.facebook.com/BideshBiswasBiki/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
             </div>
             </div>
-            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">              
-                <!-- Your Web3Forms Access Key -->
+          <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contact-form">
                 <input type="hidden" name="access_key" value="943250b4-66bc-49db-a6e8-90bf6a02da3e">
 
                 <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
@@ -299,6 +298,9 @@
                 <div class="form-group"><textarea name="message" rows="5" placeholder="Your Message" required></textarea></div>
                 
                 <button type="submit" class="btn submit-btn">Send Message</button>
+                
+                <!-- This is where your custom success message will show up -->
+                <p id="result" style="color: #38bdf8; margin-top: 1rem; display: none; text-align: center; font-weight: bold;"></p>
             </form>
         </div>
         <footer><p>&copy; 2026 Bidesh Biswas Biki</p></footer>

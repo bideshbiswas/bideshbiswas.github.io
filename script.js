@@ -159,3 +159,47 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousedown', () => { if(rocket) rocket.style.filter = "drop-shadow(0 0 5px #38bdf8)"; });
     document.addEventListener('mouseup', () => { if(rocket) rocket.style.filter = "drop-shadow(0 0 15px #38bdf8)"; });
 });
+
+const form = document.getElementById('contact-form');
+const result = document.getElementById('result');
+
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Stops the page from redirecting
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+        
+        result.style.display = "block";
+        result.innerHTML = "Sending...";
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            if (response.status == 200) {
+                // Your custom success message!
+                result.innerHTML = "Message sent successfully! I will be in touch soon.";
+                result.style.color = "#38bdf8"; 
+            } else {
+                result.innerHTML = "Oops! Something went wrong.";
+                result.style.color = "red";
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = "Something went wrong!";
+        })
+        .then(function() {
+            form.reset(); // Clears the form fields
+            setTimeout(() => {
+                result.style.display = "none"; // Hides the message after 5 seconds
+            }, 5000);
+        });
+    });
+}
