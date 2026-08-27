@@ -204,3 +204,43 @@ if (form) {
         });
     });
 }
+
+function copyEmail() {
+    // 1. Define your email address here
+    const myEmail = "bideshbiswas@ymail.com"; 
+    
+    // 2. Copy to clipboard
+    navigator.clipboard.writeText(myEmail).then(() => {
+        const btn = document.getElementById('copy-email-btn');
+        const textSpan = document.getElementById('copy-text');
+        
+        // 3. Change text and color to indicate success
+        textSpan.innerText = "Copied!";
+        btn.classList.add('copied');
+        
+        // 4. Revert back to normal after 2.5 seconds
+        setTimeout(() => {
+            textSpan.innerText = "bideshbiswas@ymail.com";
+            btn.classList.remove('copied');
+        }, 2500);
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+    });
+}
+
+
+const backToTopBtn = document.getElementById("back-to-top");
+
+        // Show or hide the button when scrolling
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        // Smooth scroll to top on click
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
