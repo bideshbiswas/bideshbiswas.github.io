@@ -456,3 +456,168 @@ section { padding: 6rem 10%; }
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
     transform: translateY(-3px);
 }
+
+/* --- Terminal Typing Effect --- */
+/* --- Terminal Typing Effect --- */
+.terminal-greeting {
+    font-family: 'Courier New', Courier, monospace; 
+    color: var(--primary, #38bdf8);
+    font-size: 1.6rem; /* Bumped up from 1.1rem */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    min-height: 2.2rem; /* Increased so the larger text has room */
+}
+.typing-cursor {
+    display: inline-block;
+    color: var(--primary, #38bdf8);
+    animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+
+/* --- Glowing Nodal Mesh Card Hover Effect --- */
+
+/* 1. Ensure the cards can contain the absolute overlay */
+.project-card, .research-card, .edu-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease; 
+}
+
+/* 2. Keep text and images above the glowing mesh */
+.project-card > *, .research-card > *, .edu-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* 3. Build the triangulated mesh pattern */
+.project-card::before, .research-card::before, .edu-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Layered linear gradients to draw the 2D mesh grid */
+    background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.15) 1px, transparent 1px),
+        linear-gradient(45deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+        linear-gradient(-45deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+    background-size: 30px 30px; 
+    background-position: center;
+    opacity: 0; 
+    transition: opacity 0.4s ease-in-out; 
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+/* 4. Trigger the glow and lift on hover */
+.project-card:hover::before, .research-card:hover::before, .edu-card:hover::before {
+    opacity: 1; 
+}
+
+.project-card:hover, .research-card:hover, .edu-card:hover {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.25) !important; 
+    border-color: var(--primary, #38bdf8) !important; 
+    transform: translateY(-8px) !important; 
+}
+
+
+
+/* --- Scroll-Triggered Skill Bars --- */
+.progress-line span {
+    width: 0 !important; /* Forces the bar to start at 0% */
+    transition: width 1.5s cubic-bezier(0.1, 0.5, 0.2, 1); /* Smooth acceleration/deceleration */
+    position: relative;
+}
+
+/* When the JavaScript adds this class, the bar fills up */
+.progress-line.animate span {
+    width: var(--w) !important;
+}
+
+/* The glowing leading edge (GPU Heat Effect) */
+.progress-line span::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 8px;
+    background: #fff;
+    box-shadow: -2px 0 10px #fff, -5px 0 20px var(--primary);
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Turn on the glow when the animation starts */
+.progress-line.animate span::after {
+    opacity: 1; 
+}
+
+
+
+/* --- Upgraded Copy Email Button --- */
+.copy-btn {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(15, 23, 42, 0.8));
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-left: 3px solid var(--primary, #38bdf8); /* Bold tech-accent line on the left */
+    color: #fff;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    font-weight: 500;
+    border-radius: 6px; /* Squarer, cleaner edges instead of a round pill */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-top: 1.5rem; /* Ensures it has space from the social links above it */
+}
+
+/* Hover State */
+.copy-btn:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.9));
+    border-color: var(--primary, #38bdf8);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3); /* Bright cyan glow */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+/* Success State (When Clicked) */
+.copy-btn.copied {
+    background: rgba(34, 197, 94, 0.15) !important;
+    border-color: rgba(34, 197, 94, 0.5) !important;
+    border-left: 3px solid #22c55e !important; /* Green accent */
+    color: #22c55e !important;
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.25) !important;
+}
+
+
+/* --- Animated Script Background --- */
+.script-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    color: var(--primary, #38bdf8);
+    opacity: 0.15; /* Keeps it subtle in the background */
+    z-index: 1; /* Sits behind the skills (z-index: 2) */
+    pointer-events: none; /* Stops it from blocking clicks */
+    padding: 1rem;
+    overflow: hidden;
+    line-height: 1.4;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+}

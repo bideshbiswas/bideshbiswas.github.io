@@ -244,3 +244,117 @@ const backToTopBtn = document.getElementById("back-to-top");
         backToTopBtn.addEventListener("click", () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
+
+
+        const textElement = document.getElementById('typing-text');
+    // Here are the phrases it will type out. You can customize these!
+    const phrases = [
+        "> Initializing CUDA nodes...", 
+        "> Allocating GPU memory...", 
+        "> Hello, I am"
+    ];
+    
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        // Handle typing or deleting characters
+        if (isDeleting) {
+            textElement.innerText = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            textElement.innerText = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        // Adjust speed (deleting is faster than typing)
+        let typingSpeed = isDeleting ? 30 : 60;
+
+        // Logic for pausing and switching directions
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            // If it's the last phrase ("Hello, I'm"), stop the loop so it stays on screen
+            if (phraseIndex === phrases.length - 1) {
+                // Optional: remove the blinking cursor after it finishes
+                document.querySelector('.typing-cursor').style.animation = "none";
+                return; 
+            }
+            isDeleting = true;
+            typingSpeed = 1000; // Pause for 1 second before deleting
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex++;
+            typingSpeed = 400; // Pause briefly before typing the next word
+        }
+
+        setTimeout(typeEffect, typingSpeed);
+    }
+
+    // Start the typing effect half a second after the page loads
+    setTimeout(typeEffect, 500);
+
+
+
+    // 1. Select all the skill progress lines on the page
+    const progressLines = document.querySelectorAll('.progress-line');
+
+    // 2. Set up the observer to watch them
+    const skillObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // 3. When a skill bar enters the screen...
+            if (entry.isIntersecting) {
+                // Add the animation class
+                entry.target.classList.add('animate');
+                // Stop watching it so it doesn't reset when scrolling back up
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.5 // Triggers when the bar is at least 50% visible on screen
+    });
+
+    // 4. Attach the observer to each skill bar
+    progressLines.forEach(line => {
+        skillObserver.observe(line);
+    });
+
+
+
+const scriptBg = document.getElementById('script-bg');
+    
+    // Custom terminal logs related to your actual tech stack!
+    const consoleLogs = [
+        "nvcc -O3 -arch=sm_70 solver.cu -o solver",
+        "[OK] GPU Device 0: NVIDIA TITAN V memory allocated.",
+        "Initializing cuDSS sparse solver...",
+        "Partitioning 3D unstructured mesh (METIS)...",
+        "Loading ADVENTURE_FullWave modules...",
+        "MPI_Comm_rank: Establishing multi-node cluster...",
+        "> Thread sync complete. Error tolerance: 1e-6",
+        "[Log] Solving large-scale Poisson equation...",
+        "Executing computeSubdomain<<<1024, 256>>>()",
+        "Data transfer: Host to Device... Success.",
+        "[System] GPU utilization at 98% | Temp: 68C"
+    ];
+
+    function streamCode() {
+        if (!scriptBg) return;
+        
+        // Create a new line of code
+        const line = document.createElement('div');
+        line.innerText = "> " + consoleLogs[Math.floor(Math.random() * consoleLogs.length)];
+        scriptBg.appendChild(line);
+        
+        // Keep the background from filling up infinitely (removes top lines)
+        if (scriptBg.children.length > 25) {
+            scriptBg.removeChild(scriptBg.firstChild);
+        }
+        
+        // Call the next line at a random interval (between 100ms and 600ms)
+        setTimeout(streamCode, Math.random() * 500 + 100);
+    }
+
+    // Start the animation
+    setTimeout(streamCode, 1000);

@@ -39,7 +39,10 @@
                     <span class="status-dot"></span>
                     Active
                 </div>
-                <p class="greeting">Hello, I'm</p>
+                <!-- Terminal Typing Greeting -->
+<div class="terminal-greeting">
+    <span id="typing-text"></span><span class="typing-cursor">_</span>
+</div>
                 <h1>Bidesh <br><span>Biswas Biki</span></h1>
         <p class="bio">
                     Researcher & Developer specializing in High-Performance Computing, System Analysis and GPU Acceleration.
@@ -150,36 +153,42 @@
                 </div>
             </div>
 
-            <!-- Right Column: Professional Skills -->
-            <div class="skills-wrapper">
-                <h3 class="skills-title">Professional Skills</h3>
-                
-<div class="skill-box force-hover-target">
-                    <div class="skill-info"><span>High-Performance & Parallel Computing</span><span>95%</span></div>
-                    <div class="progress-line" style="--w: 95%;"><span></span></div>
-                </div>
-                
-                <div class="skill-box force-hover-target">
-                    <div class="skill-info"><span>C / CUDA / cuDSS / CMake</span><span>90%</span></div>
-                    <div class="progress-line" style="--w: 90%;"><span></span></div>
-                </div>
-                
-                <div class="skill-box force-hover-target">
-                    <div class="skill-info"><span>Simulation & Electromagnetic Analysis</span><span>90%</span></div>
-                    <div class="progress-line" style="--w: 90%;"><span></span></div>
-                </div>
-                
-                <div class="skill-box force-hover-target">
-                    <div class="skill-info"><span>Python / ML / NLP / Image Processing</span><span>85%</span></div>
-                    <div class="progress-line" style="--w: 85%;"><span></span></div>
-                </div>
-                
-                <div class="skill-box force-hover-target">
-                    <div class="skill-info"><span>PHP / Laravel / JavaScript / HTML / CSS</span><span>85%</span></div>
-                    <div class="progress-line" style="--w: 85%;"><span></span></div>
-                </div>
-                
-            </div>
+<!-- Right Column: Professional Skills -->
+<div class="skills-wrapper" style="position: relative; overflow: hidden; padding: 2rem; border-radius: 10px; background: rgba(15, 23, 42, 0.6);">
+    
+    <!-- 1. The Animated Code Background -->
+    <div id="script-bg" class="script-bg"></div>
+
+    <!-- 2. Your Skills (Wrapped to stay above the animation) -->
+    <div style="position: relative; z-index: 2;">
+        <h3 class="skills-title">Professional Skills</h3>
+        
+        <div class="skill-box force-hover-target">
+            <div class="skill-info"><span>High-Performance & Parallel Computing</span><span>95%</span></div>
+            <div class="progress-line" style="--w: 95%;"><span></span></div>
+        </div>
+        
+        <div class="skill-box force-hover-target">
+            <div class="skill-info"><span>C / CUDA / cuDSS / CMake</span><span>90%</span></div>
+            <div class="progress-line" style="--w: 90%;"><span></span></div>
+        </div>
+        
+        <div class="skill-box force-hover-target">
+            <div class="skill-info"><span>Simulation & Electromagnetic Analysis</span><span>90%</span></div>
+            <div class="progress-line" style="--w: 90%;"><span></span></div>
+        </div>
+        
+        <div class="skill-box force-hover-target">
+            <div class="skill-info"><span>Python / ML / NLP / Image Processing</span><span>85%</span></div>
+            <div class="progress-line" style="--w: 85%;"><span></span></div>
+        </div>
+        
+        <div class="skill-box force-hover-target">
+            <div class="skill-info"><span>PHP / Laravel / JavaScript / HTML / CSS</span><span>85%</span></div>
+            <div class="progress-line" style="--w: 85%;"><span></span></div>
+        </div>
+    </div>
+</div>
         </div>
     </section>
 
@@ -353,8 +362,8 @@
         <div class="contact-container">
             <div class="contact-info">
                 <h3>Let's Connect</h3>
-                <p>Open to discussing research, HPC collaborations, or life in Japan.</p>
-                <div class="info-item"><i class="fas fa-envelope"></i><span>bideshbiswas@ymail.com</span></div>
+                <p>Open to discuss about research, HPC collaborations or life in Japan.</p>
+    
                 <div class="info-item"><i class="fas fa-map-marker-alt"></i><span>Miyazaki, Japan</span></div>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/bideshbiswasbiki1/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
@@ -363,10 +372,11 @@
                 <a href="https://www.facebook.com/BideshBiswasBiki/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
             </div>
             <div style="margin-top: 1.5rem;">
-    <button id="copy-email-btn" class="copy-btn" onclick="copyEmail()">
-        <span id="copy-text">bideshbiswas@ymail.com</span> 📋
-    </button>
 </div>
+
+            <button id="copy-email-btn" class="copy-btn" onclick="copyEmail()">
+                <span id="copy-text">bideshbiswas@ymail.com</span> 📋
+                </button>
             </div>
           <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contact-form">
                 <input type="hidden" name="access_key" value="943250b4-66bc-49db-a6e8-90bf6a02da3e">
