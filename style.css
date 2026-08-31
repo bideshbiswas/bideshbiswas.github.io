@@ -621,3 +621,121 @@ section { padding: 6rem 10%; }
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
 }
+
+/* --- Left Column OS Grid --- */
+.os-grid-left {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.os-card-small {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.2rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.os-card-small i {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+/* Hover Effects */
+.os-card-small:hover { 
+    transform: translateY(-3px); 
+    background: rgba(56, 189, 248, 0.1); 
+}
+.os-card-small.linux:hover { 
+    border-color: #f5c000; 
+    box-shadow: 0 4px 12px rgba(245, 192, 0, 0.15); 
+}
+.os-card-small.linux:hover i { color: #f5c000; }
+
+.os-card-small.windows:hover { 
+    border-color: #00a4ef; 
+    box-shadow: 0 4px 12px rgba(0, 164, 239, 0.15); 
+}
+.os-card-small.windows:hover i { color: #00a4ef; }
+
+.os-card-small.mac:hover { 
+    border-color: #a3aaae; 
+    box-shadow: 0 4px 12px rgba(163, 170, 174, 0.15); 
+}
+.os-card-small.mac:hover i { color: #fff; }
+
+
+.scholarship-container {
+    display: flex;
+    flex-direction: row; /* Keeps them side-by-side */
+    justify-content: center; /* Centers the smaller boxes in the middle of the screen */
+    gap: 1.5rem;
+    padding: 0 1rem;
+    flex-wrap: wrap; /* Stacks on mobile */
+}
+
+.scholarship-card {
+    flex: 1; 
+    min-width: 300px;
+    max-width: 400px; /* PREVENTS the boxes from getting too large */
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
+    border: 1px solid rgba(245, 192, 0, 0.2);
+    border-top: 3px solid #f5c000;
+    border-radius: 12px;
+    padding: 1.5rem; 
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+}
+
+.scholarship-body p {
+    color: var(--text-muted);
+    font-size: 0.9rem; /* Slightly smaller text for the smaller box */
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: justify; /* Fully justifies the text */
+    text-justify: inter-word; 
+}
+
+
+
+/* --- Gallery Category Headers --- */
+.category-title {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(56, 189, 248, 0.3); /* Faded cyan line */
+    display: inline-block;
+    position: relative;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 40%;
+    height: 2px;
+    background: var(--primary, #38bdf8); /* Bright cyan accent */
+}
+
+/* Ensure the grid defaults to 3 columns neatly */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
